@@ -2,10 +2,10 @@
 """
 MuLES client example: auto_start_mules
 This example shows how to:
-- Start a MuLES instance from MATLAB 
+- Start a MuLES instance from Python 
 - Connect to MuLES instance
 - Stream data for 10 s
-- Close a MuLES instance from MATLAB  
+- Close a MuLES instance from Python  
 
 The scrip is divided as follows
 1. Start MuLES instance
@@ -53,6 +53,11 @@ if __name__ == "__main__":
     mules_client.tone(600,250)
     eeg_data = mules_client.getdata(10)
     mules_client.tone(900,250)
+    channel = 4;
+    time_vector =  np.arange(0,eeg_data.shape[0]) / fs
+    h, ax = plt.subplots()
+    h.canvas.set_window_title('EEG data from: ' + device_name + '. Electrode: ' + channel_names[channel-1]   )
+    ax.plot(time_vector, eeg_data[:,channel-1])
 
     # 4. Close connection and close MuLES instance
     mules_client.kill()

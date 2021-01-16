@@ -3,7 +3,7 @@
 MuLES client example: simple_client
 This example shows the utilization of MuLES to:
 - Start acquisition of data from one device
-- Stream the acquire data to MATLAB
+- Stream the acquire data to Python
 - Online plotting the data steam 
 
 The script is divided as follows

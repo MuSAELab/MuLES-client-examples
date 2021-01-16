@@ -55,10 +55,10 @@ class MulesClient():
             Extra parameters
         
         Arguments:
-            ip: the IP adress to be used to connect to the MuLES Server.
+            ip:   the IP adress to be used to connect to the MuLES Server.
             port: the port to use for a particular MuLES client. Every instance of MuLES should
-                use a different port. To determine which port to use, please refer to the
-                configuration file you are using for each instance of MuLES.
+                  use a different port. To determine which port to use, please refer to the
+                  configuration file you are using for each instance of MuLES.
         """
         self.ip = ip
         self.port = port
@@ -72,7 +72,7 @@ class MulesClient():
         # Dictionary containing information about the device
         self.params = {'device name': dev_name,
                        'device hardware': dev_hardware,
-                       'sampling frequency': int(fs),
+                       'sampling frequency': fs,
                        'data format': data_format,
                        'number of channels': nCh,
                        'names of channels': channel_names}
@@ -88,7 +88,7 @@ class MulesClient():
         try:
             self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.client.connect((self.ip, self.port))
-            print('Connection successful')
+            print('Connection with the server ' + self.ip + ':' + str(self.port) + ' OK')
         except:
             self.client = None
             print('Connection attempt unsuccessful')
@@ -131,7 +131,8 @@ class MulesClient():
         This method flushes the data from the MuLES software. This is equivalent to calling
         sendcommand('F').
         """
-        self.sendcommand('F') 
+        self.sendcommand('F')
+        print('Flush Command');
 
     def sendtrigger(self, trigger):
         """
@@ -302,7 +303,7 @@ class MulesClient():
             seconds: used to calculate the amount of samples requested n_samples
                      n_samples = seconds * sampling_frequency
             flush:   Boolean, if True send the command Flush before getting Data,
-                     Defaul = True
+                     Default = True
         """        
         if flush:        
             self.flushdata()
