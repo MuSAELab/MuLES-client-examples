@@ -63,7 +63,7 @@ time_vector_1 = (1:size(eeg_data_1,1)) / fs;
 time_vector_2 = (1:size(eeg_data_2,1)) / fs;
 channel = 4;
 
-h = figure('name',['EEG data from: ', device_name, '. Electrode: ', channel_names{4}]);
+h = figure('name',['EEG data from: ', device_name, '. Electrode: ', channel_names{channel}]);
 subplot(2,1,1)
 plot(time_vector_1, eeg_data_1(:,channel));
 subplot(2,1,2)

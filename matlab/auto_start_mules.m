@@ -42,6 +42,11 @@ fs = mules_client.getfs();                      % get sampling frequency
 mules_client.tone(600,250);
 eeg_data = mules_client.getdata(10);
 mules_client.tone(900,250);
+time_vector = (1:size(eeg_data,1)) / fs;
+channel = 4;
+h = figure('name',['EEG data from: ', device_name, '. Electrode: ', channel_names{channel}]);
+plot(time_vector, eeg_data(:,channel));
+
 
 % 4. Close connection and close MuLES instance
 mules_client.kill()

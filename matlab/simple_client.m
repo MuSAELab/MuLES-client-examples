@@ -48,8 +48,8 @@ mules_client.flushdata();
 mules_client.tone(600,250);
 
 % Create Figure
-h = figure('name',['EEG data from: ', device_name, '. Electrode: ', channel_names{4}]);
 channel = 4;
+h = figure('name',['EEG data from: ', device_name, '. Electrode: ', channel_names{channel}]);
 
 while true       
     pause(0.1);
